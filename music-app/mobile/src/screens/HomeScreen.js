@@ -28,7 +28,10 @@ const HomeScreen = ({ navigation }) => {
   ];
 
   const renderMusicItem = ({ item }) => (
-    <TouchableOpacity style={styles.musicItem}>
+    <TouchableOpacity
+      style={styles.musicItem}
+      onPress={() => navigation.navigate('MusicDetail', { musicId: item.id })}
+    >
       <Image source={{ uri: item.cover }} style={styles.musicCover} />
       <Text style={styles.musicTitle} numberOfLines={1}>
         {item.title}
@@ -45,7 +48,7 @@ const HomeScreen = ({ navigation }) => {
         {/* 头部 */}
         <View style={styles.header}>
           <Text style={styles.headerTitle}>音乐</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Search')}>
             <Icon name="search" size={24} color="#fff" />
           </TouchableOpacity>
         </View>

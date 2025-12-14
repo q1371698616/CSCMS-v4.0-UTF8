@@ -7,10 +7,15 @@ import { useSelector } from 'react-redux';
 
 // Screens
 import LoginScreen from '../screens/LoginScreen';
+import RegisterScreen from '../screens/RegisterScreen';
 import HomeScreen from '../screens/HomeScreen';
 import DiscoverScreen from '../screens/DiscoverScreen';
 import MessageScreen from '../screens/MessageScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import PlayerScreen from '../screens/PlayerScreen';
+import SearchScreen from '../screens/SearchScreen';
+import MusicDetailScreen from '../screens/MusicDetailScreen';
+import SingerDetailScreen from '../screens/SingerDetailScreen';
 import MusicPlayer from '../components/MusicPlayer';
 
 const Stack = createStackNavigator();
@@ -109,9 +114,18 @@ const AppNavigator = () => {
         }}
       >
         {isLoggedIn ? (
-          <Stack.Screen name="Main" component={TabNavigator} />
+          <>
+            <Stack.Screen name="Main" component={TabNavigator} />
+            <Stack.Screen name="Player" component={PlayerScreen} />
+            <Stack.Screen name="Search" component={SearchScreen} />
+            <Stack.Screen name="MusicDetail" component={MusicDetailScreen} />
+            <Stack.Screen name="SingerDetail" component={SingerDetailScreen} />
+          </>
         ) : (
-          <Stack.Screen name="Login" component={LoginScreen} />
+          <>
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Register" component={RegisterScreen} />
+          </>
         )}
       </Stack.Navigator>
     </NavigationContainer>
